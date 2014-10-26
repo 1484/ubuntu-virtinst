@@ -13,8 +13,12 @@ VIRT_ARCH=x86_64
 #LOCATION=$SITE/dists/$RELEASE_NAME/main/installer-$ARCH/
 LOCATION=/home/motoki/iso/ubuntu/ubuntu-14.04.1-server-amd64.iso
 
-DISKFORMAT=raw
-DISK=$TOP_DIR/../images/$NAME.img
+DISK1FORMAT=raw
+DISK1SIZE=64
+DISK1FILE=$TOP_DIR/../images/$NAME.img
+DISK2FORMAT=raw
+DISK2SIZE=64
+DISK2FILE=$TOP_DIR/../images/$NAME-volumes.img
 
 sudo virt-install \
     --name $NAME \
@@ -27,7 +31,8 @@ sudo virt-install \
     --arch $VIRT_ARCH \
     --serial pty \
     --console pty \
-    --disk=$DISK,format=$DISKFORMAT,size=128,sparse=true \
+    --disk=$DISK1FILE,format=$DISK1FORMAT,size=$DISK1SIZE,sparse=true \
+    --disk=$DISK2FILE,format=$DISK2FORMAT,size=$DISK2SIZE,sparse=true \
     --nographics \
     --location $LOCATION \
     --initrd-inject $TOP_DIR/preseed.cfg \
