@@ -49,4 +49,6 @@ console-setup/layoutcode=jp
 console-setup/ask_detect=false
 DEBCONF_DEBUG=5
 " \
-    --network network=default,model=virtio
+    --network network=external01,model=virtio \
+    --network network=external01,model=virtio \
+    --network network=internal01,model=virtio
