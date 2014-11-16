@@ -13,12 +13,13 @@ SITE=http://ftp.riken.go.jp/Linux/ubuntu
 LOCATION=$SITE/dists/$RELEASE_NAME/main/installer-$ARCH/
 #LOCATION=/home/ubuntu/iso/ubuntu/ubuntu-14.04.1-server-amd64.iso
 
+IMAGEDIR=/var/lib/libvirt/images
 DISK1FORMAT=raw
 DISK1SIZE=64
-DISK1FILE=$TOP_DIR/../images/$NAME.img
+DISK1FILE=$IMAGEDIR/$NAME.img
 DISK2FORMAT=raw
 DISK2SIZE=64
-DISK2FILE=$TOP_DIR/../images/$NAME-volumes.img
+DISK2FILE=$IMAGEDIR/$NAME-volumes.img
 
 sudo virt-install \
     --name $NAME \
@@ -35,6 +36,8 @@ sudo virt-install \
     --disk=$DISK2FILE,format=$DISK2FORMAT,size=$DISK2SIZE,sparse=true \
     --nographics \
     --location $LOCATION \
+    --network network=management,model=virtio \
+    --network network=internal,model=virtio \
     --initrd-inject $TOP_DIR/stack03/preseed.cfg \
     --extra-args "
 console=ttyS0,115200
@@ -48,6 +51,4 @@ locale=en_US.UTF-8
 console-setup/layoutcode=jp
 console-setup/ask_detect=false
 DEBCONF_DEBUG=5
-" \
-    --network network=external01,model=virtio \
-    --network network=internal01,model=virtio
+"
