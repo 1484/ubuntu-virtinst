@@ -9,9 +9,9 @@ MEMORY=8192
 ARCH=amd64
 VIRT_ARCH=x86_64
 
-SITE=http://ftp.riken.go.jp/Linux/ubuntu
-LOCATION=$SITE/dists/$RELEASE_NAME/main/installer-$ARCH/
-#LOCATION=/home/ubuntu/iso/ubuntu/ubuntu-14.04.1-server-amd64.iso
+#SITE=http://ftp.riken.go.jp/Linux/ubuntu
+#LOCATION=$SITE/dists/$RELEASE_NAME/main/installer-$ARCH/
+LOCATION=/tmp/ubuntu-14.04.1-server-amd64.iso
 
 IMAGEDIR=/var/lib/libvirt/images
 DISK1FORMAT=raw
