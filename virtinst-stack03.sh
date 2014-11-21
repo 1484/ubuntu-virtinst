@@ -23,13 +23,12 @@ DISK2FILE=$IMAGEDIR/$NAME-volumes.img
 
 sudo virt-install \
     --name $NAME \
+    --cpu host \
     --os-type linux \
     --os-variant ubuntu${RELEASE_NAME} \
-    --virt-type kvm \
     --connect=qemu:///system \
     --vcpus $NUM_CPU \
     --ram $MEMORY \
-    --arch $VIRT_ARCH \
     --serial pty \
     --console pty \
     --disk=$DISK1FILE,format=$DISK1FORMAT,size=$DISK1SIZE,sparse=true \
