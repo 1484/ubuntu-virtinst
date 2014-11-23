@@ -1,0 +1,4 @@
+<network>
+  <name>internal01</name>
+  <bridge name='internal01' stp='off' delay='0'/>
+</network>

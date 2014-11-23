@@ -32,9 +32,9 @@ sudo virt-install \
     --console pty \
     --disk=$DISK1FILE,format=$DISK1FORMAT,size=$DISK1SIZE,sparse=true \
     --location $LOCATION \
-    --network network=management,model=virtio \
-    --network network=internal,model=virtio \
-    --network network=external,model=virtio \
+    --network network=external01,model=virtio \
+    --network network=internal01,model=virtio \
+    --network network=external01,model=virtio \
     --initrd-inject $TOP_DIR/stack01/preseed.cfg \
     --extra-args "
 console=ttyS0,115200
