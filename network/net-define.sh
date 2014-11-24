@@ -1,10 +1,7 @@
 #!/bin/bash
 
-
-for net in external01 internal01; do
-  virsh net-define ${net}.xml
-  virsh net-start ${net}
-  virsh net-autostart ${net}
-done
+virsh net-define openstack.xml
+virsh net-start openstack
+virsh net-autostart openstack
 
 virsh net-list --all

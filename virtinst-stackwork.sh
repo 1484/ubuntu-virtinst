@@ -32,7 +32,7 @@ sudo virt-install \
     --disk=$DISK1FILE,format=$DISK1FORMAT,size=$DISK1SIZE,sparse=true \
     --nographics \
     --location $LOCATION \
-    --network network=management,model=virtio \
+    --network network=openstack,model=virtio \
     --initrd-inject $TOP_DIR/stackwork/preseed.cfg \
     --extra-args "
 console=ttyS0,115200
