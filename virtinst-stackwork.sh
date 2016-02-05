@@ -4,8 +4,8 @@ TOP_DIR=$(cd $(dirname "$0") && pwd)
 
 NAME=stackwork
 RELEASE_NAME=trusty
-NUM_CPU=10
-MEMORY=24576
+NUM_CPU=2
+MEMORY=4096
 ARCH=amd64
 VIRT_ARCH=x86_64
 
@@ -15,22 +15,22 @@ LOCATION=$SITE/dists/$RELEASE_NAME/main/installer-$ARCH/
 
 IMAGEDIR=/var/lib/libvirt/images
 DISK1FORMAT=raw
-DISK1SIZE=400
+DISK1SIZE=10
 DISK1FILE=$IMAGEDIR/$NAME.img
 
 sudo virt-install \
     --name $NAME \
     --os-type linux \
     --os-variant ubuntu${RELEASE_NAME} \
-    --virt-type kvm \
+    --cpu host \
+    --arch $VIRT_ARCH \
     --connect=qemu:///system \
     --vcpus $NUM_CPU \
     --ram $MEMORY \
-    --arch $VIRT_ARCH \
+    --nographics \
     --serial pty \
     --console pty \
     --disk=$DISK1FILE,format=$DISK1FORMAT,size=$DISK1SIZE,sparse=true \
-    --nographics \
     --location $LOCATION \
     --network network=openstack,model=virtio \
     --initrd-inject $TOP_DIR/stackwork/preseed.cfg \
