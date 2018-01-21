@@ -3,7 +3,8 @@
 TOP_DIR=$(cd $(dirname "$0") && pwd)
 
 NAME=stack01
-RELEASE_NAME=trusty
+RELEASE_NAME=xenial
+OS_VARIANT=ubuntu16.04
 NUM_CPU=2
 MEMORY=8192
 ARCH=amd64
@@ -21,7 +22,7 @@ DISK1FILE=$IMAGEDIR/$NAME.img
 sudo virt-install \
     --name $NAME \
     --os-type linux \
-    --os-variant ubuntu${RELEASE_NAME} \
+    --os-variant $OS_VARIANT \
     --cpu host \
     --arch $VIRT_ARCH \
     --connect=qemu:///system \
