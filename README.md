@@ -1,5 +1,8 @@
 # ubuntu-virtinst
-LinuxにKVM(libvirt)をインストールされている環境で用いる事が出来るscriptです。shellscriptのみで実施も出来ますし、Vagrantも導入されていれば更に楽をする事が出来ます。
+[quick devstack](https://github.com/1484/quick-devstack)の学習を行うにあたり3台のサーバ環境が必要となります。物理構築を行っても構いませんしWindowsやMacOS上にvirtualboxやVMwareなどを用いて構築しても良いでしょう。
+
+もしHostOSとしてLinuxをインストールされているのであればKVMを用いる事が出来るとこのshellscriptやVagrantを用いて簡単に構築する事ができます。
+
 
 ## 構築方法
 まず必須条件としてはKVMが用いる事が出来る事となります。
